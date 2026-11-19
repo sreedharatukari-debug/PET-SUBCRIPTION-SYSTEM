@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetJoy | Pet Food, Toys & Accessories Automated Subscription System</title>
+  <!-- Link to CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo" onclick="showSection('home')">
+        <span class="logo-icon">🐾</span>
+        <span class="logo-text">PetJoy</span>
+      </div>
+
+      <nav class="nav-links">
+        <button class="nav-btn active" id="btn-home" onclick="showSection('home')">Home</button>
+        <button class="nav-btn" id="btn-products" onclick="showSection('products')">Products</button>
+        <button class="nav-btn" id="btn-subscribe" onclick="showSection('subscribe')">Subscribe Now 🎁</button>
+        <button class="nav-btn" id="btn-my-subs" onclick="showSection('my-subs')">My Subscriptions</button>
+        <button class="nav-btn" id="btn-admin" onclick="showSection('admin')">Admin Panel ⚙️</button>
+        <button class="nav-btn" id="btn-login" onclick="showSection('login')">Login 🔐</button>
+      </nav>
+
+      <!-- Account Login / Profile Status Area -->
+      <div class="nav-auth" id="navAuth">
+        <!-- Rendered by JavaScript: Login button OR User/Admin profile pill -->
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SECTION 1: HOME ================= -->
+  <section id="sec-home" class="content-section">
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+      <div class="hero-text">
+        <span class="tag">🐾 Automated Pet Care On Autopilot</span>
+        <h1>Pet Food, Toys & Accessories <br><span class="highlight">Automated Subscription System</span></h1>
+        <p>Never worry about running out of pet essentials again. Choose your pet's food, toys, and grooming gear, select your delivery frequency, and get deliveries automatically on schedule across India!</p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary btn-lg" onclick="showSection('subscribe')">Create Your Pet Box 🐾</button>
+          <button class="btn btn-secondary btn-lg" onclick="showSection('products')">View Products</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&auto=format&fit=crop&q=80" alt="Happy pet with toys">
+      </div>
+    </div>
+
+    <!-- How Automated Subscription Works -->
+    <div class="container" style="margin-top: 3rem;">
+      <h2 class="section-heading">How Automated Subscription Works</h2>
+      <div class="three-steps">
+        <div class="step-box">
+          <div class="step-num">1</div>
+          <h3>Select Pet Items</h3>
+          <p>Pick premium food, exciting toys, and grooming accessories tailored for your dog or cat.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-num">2</div>
+          <h3>Choose Frequency</h3>
+          <p>Select delivery every Week (15% off), every 2 Weeks (10% off), or every Month (5% off).</p>
+        </div>
+        <div class="step-box">
+          <div class="step-num">3</div>
+          <h3>Automated Deliveries</h3>
+          <p>The system automatically renews your order, packs your box, and ships it right to your door.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Sample Boxes -->
+    <div class="container" style="margin-top: 3.5rem;">
+      <h2 class="section-heading">Popular Subscription Boxes</h2>
+      <div class="cards-grid">
+        <div class="sample-box-card">
+          <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=500&auto=format&fit=crop&q=80" alt="Dog Box">
+          <div class="sample-box-body">
+            <span class="badge badge-dog">🐶 Dog Package</span>
+            <h3>Puppy Starter Feast & Fun</h3>
+            <p>Maxi dry dog kibble + KONG chew toy + Dental sticks.</p>
+            <div class="price-row">
+              <span class="box-price">₹2,899 <small>/ month</small></span>
+              <button class="btn btn-primary btn-sm" onclick="quickFillBox('dog')">Subscribe</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sample-box-card">
+          <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500&auto=format&fit=crop&q=80" alt="Cat Box">
+          <div class="sample-box-body">
+            <span class="badge badge-cat">🐱 Cat Package</span>
+            <h3>Feline Gourmet & Play Club</h3>
+            <p>Indoor cat recipe + Feather wand + Catnip toy.</p>
+            <div class="price-row">
+              <span class="box-price">₹2,199 <small>/ month</small></span>
+              <button class="btn btn-primary btn-sm" onclick="quickFillBox('cat')">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 2: PRODUCTS CATALOG ================= -->
+  <section id="sec-products" class="content-section" style="display: none;">
+    <div class="container">
+      <h2 class="section-heading">Available Products</h2>
+      <p class="section-subheading">Browse all pet food, toys, and accessories available for recurring subscription.</p>
+
+      <!-- Category Filter Buttons -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCatalog('all', this)">All Products</button>
+        <button class="filter-btn" onclick="filterCatalog('food', this)">🍖 Pet Food</button>
+        <button class="filter-btn" onclick="filterCatalog('toys', this)">🧸 Pet Toys</button>
+        <button class="filter-btn" onclick="filterCatalog('accessories', this)">🦺 Pet Accessories</button>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="catalogGrid" class="cards-grid">
+        <!-- Generated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 3: SUBSCRIBE / BOX BUILDER ================= -->
+  <section id="sec-subscribe" class="content-section" style="display: none;">
+    <div class="container">
+      <h2 class="section-heading">Build Your Subscription Box 🎁</h2>
+      <p class="section-subheading">Customize items for your pet and calculate your recurring subscription cost.</p>
+
+      <div class="builder-layout">
+        <!-- Left: Form to select items -->
+        <div class="builder-form-card">
+          <h3>1. Pet Details</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Pet Species:</label>
+              <select id="subPetSpecies" onchange="onSpeciesSelectChange()">
+                <option value="dog">🐶 Dog</option>
+                <option value="cat">🐱 Cat</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Pet Name:</label>
+              <input type="text" id="subPetName" value="Max" placeholder="Enter pet name">
+            </div>
+          </div>
+
+          <h3 style="margin-top: 1.5rem;">2. Choose Your Products</h3>
+
+          <div class="form-group">
+            <label>🍖 Select Pet Food:</label>
+            <select id="subFoodSelect" onchange="calculateLiveBill()">
+              <!-- Options populated by JS -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>🧸 Select Pet Toy:</label>
+            <select id="subToySelect" onchange="calculateLiveBill()">
+              <!-- Options populated by JS -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>🦺 Select Pet Accessory:</label>
+            <select id="subAccSelect" onchange="calculateLiveBill()">
+              <!-- Options populated by JS -->
+            </select>
+          </div>
+
+          <h3 style="margin-top: 1.5rem;">3. Delivery Schedule & Discount</h3>
+          <div class="form-group">
+            <label>How often should this renew automatically?</label>
+            <select id="subFrequencySelect" onchange="calculateLiveBill()">
+              <option value="weekly">⚡ Weekly (Every 7 Days) - 15% OFF</option>
+              <option value="biweekly">📦 Bi-Weekly (Every 14 Days) - 10% OFF</option>
+              <option value="monthly" selected>🗓️ Monthly (Every 30 Days) - 5% OFF</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Delivery Address:</label>
+            <input type="text" id="subAddress" value="Flat 402, Green Glen Layout, Bellandur, Bengaluru" placeholder="Enter shipping address">
+          </div>
+        </div>
+
+        <!-- Right: Live Billing Summary -->
+        <div class="builder-summary-card">
+          <h3>📦 Box Bill Summary</h3>
+          <p class="summary-sub" id="summaryPetInfo">For Max (Dog)</p>
+
+          <div class="summary-line">
+            <span>Food Item:</span>
+            <span id="sumFoodPrice">₹0.00</span>
+          </div>
+          <div class="summary-line">
+            <span>Toy Item:</span>
+            <span id="sumToyPrice">₹0.00</span>
+          </div>
+          <div class="summary-line">
+            <span>Accessory:</span>
+            <span id="sumAccPrice">₹0.00</span>
+          </div>
+
+          <hr style="margin: 1rem 0; border: none; border-top: 1px solid #ddd;">
+
+          <div class="summary-line">
+            <span>Items Subtotal:</span>
+            <span id="sumSubtotal">₹0.00</span>
+          </div>
+          <div class="summary-line highlight-green">
+            <span>Subscription Discount:</span>
+            <span id="sumDiscount">-₹0.00</span>
+          </div>
+          <div class="summary-line">
+            <span>Automated Shipping:</span>
+            <span class="highlight-green">FREE</span>
+          </div>
+
+          <div class="summary-total-box">
+            <div class="total-label">Recurring Amount:</div>
+            <div class="total-price" id="sumFinalTotal">₹0.00</div>
+            <small id="sumFreqLabel">Billed automatically every 30 days</small>
+          </div>
+
+          <button class="btn btn-primary btn-block" onclick="saveNewSubscription()">
+            Confirm & Start Subscription 🚀
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4: MY SUBSCRIPTIONS ================= -->
+  <section id="sec-my-subs" class="content-section" style="display: none;">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+        <div>
+          <h2 class="section-heading" style="margin: 0;">My Active Subscriptions</h2>
+          <p class="section-subheading" style="margin: 0;">Manage your recurring deliveries, pause for vacations, or check delivery dates.</p>
+        </div>
+        <button class="btn btn-primary" onclick="showSection('subscribe')">+ Add Another Box</button>
+      </div>
+
+      <!-- Container where subscriptions are shown -->
+      <div id="subscriptionsList">
+        <!-- Generated by JavaScript -->
+      </div>
+
+      <!-- Simple Order Tracking Timeline Demo -->
+      <div class="tracking-card">
+        <h3>🚚 Latest Delivery Tracking Status</h3>
+        <p>Order <strong>#ORD-9102</strong> for <em>Max's Monthly Feast & Fun Box</em></p>
+        
+        <div class="timeline-steps">
+          <div class="timeline-step step-done">
+            <div class="dot">✓</div>
+            <span>Order Billed</span>
+          </div>
+          <div class="timeline-step step-done">
+            <div class="dot">✓</div>
+            <span>Box Packed</span>
+          </div>
+          <div class="timeline-step step-active">
+            <div class="dot">🚚</div>
+            <span>Out for Delivery</span>
+          </div>
+          <div class="timeline-step">
+            <div class="dot">4</div>
+            <span>Delivered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 5: ADMIN / EVALUATOR PANEL ================= -->
+  <section id="sec-admin" class="content-section" style="display: none;">
+    <div class="container">
+      <!-- Admin Access Restricted Notice (Shown when logged in as User or Logged Out) -->
+      <div id="adminAccessDenied" style="display: none; text-align: center; background: #ffffff; padding: 3rem 1.5rem; border: 1.5px solid #fee2e2; border-radius: 12px; margin-top: 1rem;">
+        <span style="font-size: 3rem;">⛔</span>
+        <h2 style="color: #ef4444; margin: 0.8rem 0 0.4rem 0;">Admin Access Required</h2>
+        <p id="adminDeniedMessage" style="color: #64748b; max-width: 520px; margin: 0 auto 1.5rem auto; font-size: 1rem;">
+          You are currently signed in as a Customer. The revenue metrics, billing cycle simulator, and system registry are restricted to Store Administrators.
+        </p>
+        <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="quickLogin('admin')">👑 Switch to Admin Account</button>
+          <button class="btn btn-secondary" onclick="showSection('home')">Back to Home</button>
+        </div>
+      </div>
+
+      <!-- Real Admin Panel Content (Shown when logged in as Admin) -->
+      <div id="adminPanelContent">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 class="section-heading" style="margin: 0;">Admin & Automation Control Panel</h2>
+            <p class="section-subheading" style="margin: 0;">Monitor recurring revenue and test the automated subscription engine.</p>
+          </div>
+          <button class="btn btn-secondary" onclick="resetDemoData()">↺ Reset Demo Data</button>
+        </div>
+
+        <!-- KPI Metrics -->
+        <div class="admin-metrics-row">
+          <div class="metric-card">
+            <div class="metric-num" id="adminActiveSubs">2</div>
+            <div class="metric-title">Active Subscriptions</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num" id="adminTotalRevenue">₹6,729.00</div>
+            <div class="metric-title">Monthly Recurring Revenue</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num" id="adminTotalOrders">2</div>
+            <div class="metric-title">Total Orders Shipped</div>
+          </div>
+        </div>
+
+        <!-- Simulator Button for Demonstration -->
+        <div class="simulator-box">
+          <div>
+            <h3 style="margin: 0 0 0.5rem 0;">⚡ Test Automated Renewal Engine</h3>
+            <p style="margin: 0; color: #ddd; font-size: 0.95rem;">
+              Click this button to simulate the passage of time! It will automatically bill active subscriptions, advance their next delivery dates, and create new order records.
+            </p>
+          </div>
+          <button class="btn btn-accent btn-lg" onclick="simulateAutomatedCycle()">
+            ▶️ Run Automated Billing Cycle Now
+          </button>
+        </div>
+
+        <!-- Table of All Subscriptions in System -->
+        <div style="margin-top: 2.5rem;">
+          <h3>System Subscriptions Registry</h3>
+          <table class="simple-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Pet Name</th>
+                <th>Items Included</th>
+                <th>Frequency</th>
+                <th>Recurring Total</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody">
+              <!-- Populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 6: DEDICATED LOGIN PAGE ================= -->
+  <section id="sec-login" class="content-section" style="display: none;">
+    <div class="container" style="max-width: 540px; margin: 1.5rem auto;">
+      <div class="login-page-card">
+        <div class="login-page-header">
+          <div class="login-brand-icon">🐾</div>
+          <h2 style="margin: 0.5rem 0 0.25rem 0; color: #0f172a; font-size: 1.7rem;">Account Login</h2>
+          <p style="color: #64748b; font-size: 0.95rem; margin: 0;">
+            Sign in with your name and password to use PetJoy as <strong>Customer (User)</strong> or <strong>Store Admin</strong>.
+          </p>
+        </div>
+
+        <!-- 1-Click Role Fill Buttons -->
+        <div style="margin-bottom: 1.25rem;">
+          <label style="font-size: 0.8rem; font-weight: bold; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">
+            ⚡ 1-Click Quick Login (Choose Role):
+          </label>
+          <div class="quick-login-grid" style="margin-top: 0.5rem;">
+            <button type="button" class="btn-quick-login btn-quick-user" onclick="quickFillAndLogin('user')">
+              <span style="font-size: 1.6rem;">👤</span>
+              <div>
+                <strong>Customer Account</strong>
+                <small>Name: Priya | Pass: user123</small>
+              </div>
+            </button>
+            <button type="button" class="btn-quick-login btn-quick-admin" onclick="quickFillAndLogin('admin')">
+              <span style="font-size: 1.6rem;">👑</span>
+              <div>
+                <strong>Admin Account</strong>
+                <small>Name: Admin | Pass: admin123</small>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-divider"><span>OR ENTER NAME &amp; PASSWORD</span></div>
+
+        <!-- Dedicated Login Form -->
+        <form id="dedicatedLoginForm" onsubmit="handleDedicatedLogin(event)">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="inputLoginRole" style="font-weight: bold; font-size: 0.9rem; color: #334155;">Account Role:</label>
+            <select id="inputLoginRole" onchange="onLoginRoleChange()" style="width: 100%; padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; background-color: #fff;">
+              <option value="user" selected>👤 Customer / User Account</option>
+              <option value="admin">👑 Store Administrator (Admin)</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="inputLoginName" style="font-weight: bold; font-size: 0.9rem; color: #334155;">Enter Name / Username:</label>
+            <input type="text" id="inputLoginName" value="Priya Sharma" placeholder="e.g. Priya Sharma or Rahul (or admin)" required style="width: 100%; padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label for="inputLoginPassword" style="font-weight: bold; font-size: 0.9rem; color: #334155;">Enter Password:</label>
+            <input type="password" id="inputLoginPassword" value="user123" placeholder="Enter password (user123 or admin123)" required style="width: 100%; padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;">
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="padding: 0.85rem; font-size: 1rem; font-weight: bold; border-radius: 8px;">
+            Sign In &amp; Continue ➔
+          </button>
+        </form>
+
+        <!-- Credentials Cheat Sheet Card -->
+        <div class="credentials-hint-box" style="margin-top: 1.5rem;">
+          <strong>📋 Valid Login Credentials:</strong>
+          <ul style="margin-top: 0.5rem;">
+            <li><strong>👤 Customer (User):</strong> Select <code>Customer</code> • Name: <code>Any name (e.g. Priya)</code> • Password: <code>user123</code><br>
+            <small style="color: #64748b;">Allows building subscription boxes, calculating live INR discounts, and managing "My Subscriptions".</small></li>
+            <li style="margin-top: 0.5rem;"><strong>👑 Store Admin:</strong> Select <code>Store Admin</code> • Name: <code>admin</code> (or your name) • Password: <code>admin123</code><br>
+            <small style="color: #64748b;">Unlocks the Admin Control Panel, Revenue metrics in ₹, All Subscriptions Registry & Billing Simulator.</small></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LOGIN MODAL ================= -->
+  <div id="loginModal" class="modal-overlay" style="display: none;" onclick="handleModalOverlayClick(event)">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 1.4rem;">🔐</span>
+          <h3 style="margin: 0; font-size: 1.2rem; color: #0f172a;">Sign In to PetJoy</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeLoginModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p id="modalNotice" class="modal-notice" style="display: none;"></p>
+
+        <!-- Quick 1-Click Demo Login Buttons -->
+        <div class="quick-login-section">
+          <label style="font-size: 0.8rem; font-weight: bold; color: #64748b; text-transform: uppercase;">
+            ⚡ Quick 1-Click Login (Choose Account):
+          </label>
+          <div class="quick-login-grid">
+            <button type="button" class="btn-quick-login btn-quick-user" onclick="quickLogin('user')">
+              <span style="font-size: 1.5rem;">👤</span>
+              <div>
+                <strong>Customer Login</strong>
+                <small>Priya (user@petjoy.in)</small>
+              </div>
+            </button>
+            <button type="button" class="btn-quick-login btn-quick-admin" onclick="quickLogin('admin')">
+              <span style="font-size: 1.5rem;">👑</span>
+              <div>
+                <strong>Admin Login</strong>
+                <small>Manager (admin@petjoy.in)</small>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-divider"><span>OR ENTER CREDENTIALS</span></div>
+
+        <!-- Standard Login Form -->
+        <form id="loginForm" onsubmit="handleManualLogin(event)">
+          <div class="form-group" style="margin-bottom: 0.9rem;">
+            <label for="loginEmail" style="font-weight: bold; font-size: 0.9rem;">Email Address:</label>
+            <input type="email" id="loginEmail" placeholder="user@petjoy.in or admin@petjoy.in" required style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.2rem;">
+            <label for="loginPassword" style="font-weight: bold; font-size: 0.9rem;">Password:</label>
+            <input type="password" id="loginPassword" placeholder="Enter password" required style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="padding: 0.75rem; font-size: 1rem;">
+            Sign In ➔
+          </button>
+        </form>
+
+        <!-- Demo Account Credentials Reference -->
+        <div class="credentials-hint-box">
+          <strong>📋 Demo Accounts:</strong>
+          <ul>
+            <li><strong>👤 User Account:</strong> <code>user@petjoy.in</code> • Password: <code>user123</code><br>
+            <small>Allows subscribing, choosing items, and managing "My Subscriptions".</small></li>
+            <li><strong>👑 Admin Account:</strong> <code>admin@petjoy.in</code> • Password: <code>admin123</code><br>
+            <small>Full access to Revenue Analytics, Registry & Billing Cycle Simulator.</small></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p><strong>PetJoy</strong> — Pet Food, Toys And Pet Accessories Automated Subscription System</p>
+      <p style="font-size: 0.85rem; color: #888;">Automated Recurring Deliveries Across India • Pure HTML, CSS & JavaScript</p>
+    </div>
+  </footer>
+
+  <!-- Link to JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

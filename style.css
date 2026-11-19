@@ -1,0 +1,905 @@
+/* ========================================================
+   PetJoy - Pet Food, Toys & Pet Accessories Subscription
+   Simple, Clean & Responsive CSS
+   ======================================================== */
+
+/* --- 1. BASIC RESET & FONTS --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif; /* Clean web-safe font */
+  background-color: #f8fafc;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* --- 2. NAVIGATION BAR --- */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 2px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #0284c7;
+  cursor: pointer;
+}
+
+.logo-icon {
+  font-size: 1.6rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-auth {
+  display: flex;
+  align-items: center;
+}
+
+.user-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.user-pill-admin {
+  background-color: #fef3c7;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.btn-logout {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #ef4444;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-logout:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+
+.btn-login-nav {
+  background-color: #0284c7;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: 0.2s;
+}
+
+.btn-login-nav:hover {
+  background-color: #0369a1;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #475569;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.nav-btn:hover {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.nav-btn.active {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+
+/* --- 3. BUTTONS & BADGES --- */
+.btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #0369a1;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #0284c7;
+  border: 2px solid #0284c7;
+}
+
+.btn-secondary:hover {
+  background-color: #f0f9ff;
+}
+
+.btn-accent {
+  background-color: #f97316;
+  color: #ffffff;
+}
+
+.btn-accent:hover {
+  background-color: #ea580c;
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+.btn-sm {
+  padding: 0.35rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.btn-lg {
+  padding: 0.8rem 1.8rem;
+  font-size: 1.05rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.badge-dog { background-color: #e0f2fe; color: #0369a1; }
+.badge-cat { background-color: #ffedd5; color: #c2410c; }
+.badge-active { background-color: #dcfce7; color: #15803d; }
+.badge-paused { background-color: #fef3c7; color: #b45309; }
+
+.tag {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: #0284c7;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  margin-bottom: 0.8rem;
+}
+
+/* --- 4. HERO SECTION --- */
+.hero-banner {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  background: linear-gradient(135deg, #f0f9ff 0%, #fff7ed 100%);
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 2.3rem;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  color: #0284c7;
+}
+
+.hero-text p {
+  color: #64748b;
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-image {
+  flex: 1;
+}
+
+.hero-image img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* --- 5. HOW IT WORKS 3 STEPS --- */
+.section-heading {
+  font-size: 1.8rem;
+  color: #0f172a;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.section-subheading {
+  color: #64748b;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.three-steps {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.step-box {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 1.8rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.step-num {
+  width: 36px;
+  height: 36px;
+  background-color: #0284c7;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+  font-weight: bold;
+}
+
+.step-box h3 {
+  margin-bottom: 0.5rem;
+  color: #0f172a;
+}
+
+.step-box p {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* --- 6. PRODUCT CARDS & SAMPLE BOXES --- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.sample-box-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sample-box-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.sample-box-body {
+  padding: 1.2rem;
+}
+
+.sample-box-body h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.sample-box-body p {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box-price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #0284c7;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-btn {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #475569;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background-color: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.product-card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-card-title {
+  font-size: 1.05rem;
+  font-weight: bold;
+  margin: 0.4rem 0;
+}
+
+.product-card-desc {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 0.8rem;
+  flex: 1;
+}
+
+.product-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 0.8rem;
+}
+
+/* --- 7. BOX BUILDER & LIVE BILL SUMMARY --- */
+.builder-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.builder-form-card, .builder-summary-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.8rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #334155;
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.summary-sub {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.highlight-green {
+  color: #10b981;
+  font-weight: bold;
+}
+
+.summary-total-box {
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.2rem 0;
+  text-align: center;
+}
+
+.total-label {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: bold;
+}
+
+.total-price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #0284c7;
+}
+
+/* --- 8. SUBSCRIPTIONS LIST & DELIVERY TRACKER --- */
+.sub-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.sub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sub-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.detail-item {
+  font-size: 0.9rem;
+}
+
+.detail-item strong {
+  display: block;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.sub-actions {
+  display: flex;
+  gap: 0.6rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 0.8rem;
+}
+
+.tracking-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.timeline-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.timeline-step {
+  text-align: center;
+  flex: 1;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.timeline-step .dot {
+  width: 32px;
+  height: 32px;
+  background-color: #e2e8f0;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem auto;
+  font-weight: bold;
+}
+
+.timeline-step.step-done {
+  color: #10b981;
+}
+
+.timeline-step.step-done .dot {
+  background-color: #10b981;
+}
+
+.timeline-step.step-active {
+  color: #0284c7;
+  font-weight: bold;
+}
+
+.timeline-step.step-active .dot {
+  background-color: #0284c7;
+}
+
+/* --- 9. ADMIN PANEL & TABLES --- */
+.admin-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.metric-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.metric-num {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #0284c7;
+}
+
+.metric-title {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 0.3rem;
+}
+
+.simulator-box {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.simple-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 0.8rem;
+}
+
+.simple-table th, .simple-table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+}
+
+.simple-table th {
+  background-color: #f8fafc;
+  color: #475569;
+}
+
+/* --- 10. FOOTER --- */
+.footer {
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 2rem 0;
+  margin-top: 4rem;
+}
+
+/* --- 11. LOGIN MODAL & AUTH STYLING --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-15px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-header {
+  padding: 1.25rem 1.5rem;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 4px;
+}
+
+.modal-close-btn:hover {
+  color: #0f172a;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-notice {
+  background-color: #eff6ff;
+  border-left: 4px solid #0284c7;
+  color: #1e40af;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.quick-login-section {
+  margin-bottom: 1.25rem;
+}
+
+.quick-login-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.btn-quick-login {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  transition: all 0.2s ease;
+}
+
+.btn-quick-login strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #1e293b;
+}
+
+.btn-quick-login small {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.btn-quick-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.btn-quick-user:hover {
+  border-color: #0284c7;
+  background-color: #f0f9ff;
+}
+
+.btn-quick-admin:hover {
+  border-color: #f59e0b;
+  background-color: #fffbeb;
+}
+
+.modal-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.25rem 0;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.modal-divider::before,
+.modal-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-divider span {
+  padding: 0 0.75rem;
+}
+
+.credentials-hint-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: #475569;
+}
+
+.credentials-hint-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.4rem 0 0 0;
+}
+
+.credentials-hint-box li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.credentials-hint-box code {
+  background: #e2e8f0;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #0f172a;
+}
+
+/* --- 12. RESPONSIVE FOR MOBILE --- */
+@media (max-width: 768px) {
+  .hero-banner { flex-direction: column; }
+  .three-steps { flex-direction: column; }
+  .builder-layout { grid-template-columns: 1fr; }
+  .nav-links { display: none; } /* Simplified for small screens */
+  .quick-login-grid { grid-template-columns: 1fr; }
+}
+
+/* --- 13. DEDICATED LOGIN PAGE CARD STYLING --- */
+.login-page-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+}
+
+.login-page-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.login-brand-icon {
+  font-size: 2.8rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}

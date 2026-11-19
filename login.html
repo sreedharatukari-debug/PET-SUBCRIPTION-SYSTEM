@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | PetJoy - Pet Food, Toys & Accessories Subscription System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; background-color: #f8fafc;">
+
+  <!-- Simple Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo" onclick="window.location.href='index.html'">
+        <span class="logo-icon">🐾</span>
+        <span class="logo-text">PetJoy</span>
+      </div>
+      <div>
+        <a href="index.html" class="btn btn-secondary btn-sm" style="text-decoration: none;">← Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login Card Content -->
+  <main class="container" style="max-width: 540px; margin: 3rem auto 2rem auto;">
+    <div class="login-page-card">
+      <div class="login-page-header">
+        <div class="login-brand-icon">🐾</div>
+        <h2 style="margin: 0.5rem 0 0.25rem 0; color: #0f172a; font-size: 1.75rem;">Account Sign In</h2>
+        <p style="color: #64748b; font-size: 0.95rem; margin: 0;">
+          Enter your name and password to sign in as <strong>Customer</strong> or <strong>Store Admin</strong>.
+        </p>
+      </div>
+
+      <!-- Quick 1-Click Fill Buttons -->
+      <div style="margin-bottom: 1.25rem;">
+        <label style="font-size: 0.8rem; font-weight: bold; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">
+          ⚡ Quick 1-Click Login (Choose Account):
+        </label>
+        <div class="quick-login-grid" style="margin-top: 0.5rem;">
+          <button type="button" class="btn-quick-login btn-quick-user" onclick="quickFillStandalone('user')">
+            <span style="font-size: 1.6rem;">👤</span>
+            <div>
+              <strong>Customer Login</strong>
+              <small>Name: Priya | Pass: user123</small>
+            </div>
+          </button>
+          <button type="button" class="btn-quick-login btn-quick-admin" onclick="quickFillStandalone('admin')">
+            <span style="font-size: 1.6rem;">👑</span>
+            <div>
+              <strong>Admin Login</strong>
+              <small>Name: Admin | Pass: admin123</small>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-divider"><span>OR ENTER DETAILS MANUALLY</span></div>
+
+      <!-- Standalone Login Form -->
+      <form id="standaloneLoginForm" onsubmit="handleStandaloneLogin(event)">
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label for="loginRole" style="font-weight: bold; font-size: 0.9rem; color: #334155;">Account Role:</label>
+          <select id="loginRole" onchange="onStandaloneRoleChange()" style="width: 100%; padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; background-color: #fff;">
+            <option value="user" selected>👤 Customer / User Account</option>
+            <option value="admin">👑 Store Administrator (Admin)</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label for="loginName" style="font-weight: bold; font-size: 0.9rem; color: #334155;">Enter Name / Username:</label>
+          <input type="text" id="loginName" value="Priya Sharma" placeholder="e.g. Priya Sharma or Rahul (or admin)" required style="width: 100%; padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label for="loginPassword" style="font-weight: bold; font-size: 0.9rem; color: #334155;">Enter Password:</label>
+          <input type="password" id="loginPassword" value="user123" placeholder="Enter password (user123 or admin123)" required style="width: 100%; padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="padding: 0.85rem; font-size: 1.05rem; font-weight: bold; border-radius: 8px;">
+          Sign In &amp; Launch System ➔
+        </button>
+      </form>
+
+      <!-- Credentials Reference Card -->
+      <div class="credentials-hint-box" style="margin-top: 1.5rem;">
+        <strong>📋 Login Credentials:</strong>
+        <ul style="margin-top: 0.5rem;">
+          <li><strong>👤 Customer (User):</strong> Role: <code>Customer</code> • Name: <code>Any name (e.g. Priya)</code> • Password: <code>user123</code><br>
+          <small style="color: #64748b;">Access to build subscription boxes, calculate live INR discounts, and manage "My Subscriptions".</small></li>
+          <li style="margin-top: 0.5rem;"><strong>👑 Store Admin:</strong> Role: <code>Store Admin</code> • Name: <code>admin</code> • Password: <code>admin123</code><br>
+          <small style="color: #64748b;">Full access to Admin Dashboard, Revenue metrics in ₹, All Subscriptions Registry &amp; Billing Simulator.</small></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Simple Footer -->
+  <footer class="footer" style="margin-top: 2rem;">
+    <div class="container text-center">
+      <p><strong>PetJoy</strong> — Pet Food, Toys And Pet Accessories Automated Subscription System</p>
+      <p style="font-size: 0.85rem; color: #888;">Pure HTML, CSS &amp; JavaScript Client-Side System</p>
+    </div>
+  </footer>
+
+  <!-- Script for standalone login -->
+  <script>
+    function onStandaloneRoleChange() {
+      const role = document.getElementById("loginRole").value;
+      const nameInput = document.getElementById("loginName");
+      const passInput = document.getElementById("loginPassword");
+
+      if (role === "admin") {
+        nameInput.value = "admin";
+        passInput.value = "admin123";
+        nameInput.placeholder = "e.g. admin or Store Manager";
+      } else {
+        nameInput.value = "Priya Sharma";
+        passInput.value = "user123";
+        nameInput.placeholder = "e.g. Priya Sharma or Rahul";
+      }
+    }
+
+    function quickFillStandalone(role) {
+      const roleSelect = document.getElementById("loginRole");
+      const nameInput = document.getElementById("loginName");
+      const passInput = document.getElementById("loginPassword");
+
+      if (role === "admin") {
+        roleSelect.value = "admin";
+        nameInput.value = "Store Administrator";
+        passInput.value = "admin123";
+      } else {
+        roleSelect.value = "user";
+        nameInput.value = "Priya Sharma";
+        passInput.value = "user123";
+      }
+
+      handleStandaloneLogin();
+    }
+
+    function handleStandaloneLogin(event) {
+      if (event) event.preventDefault();
+
+      let role = document.getElementById("loginRole").value;
+      const name = document.getElementById("loginName").value.trim();
+      const password = document.getElementById("loginPassword").value.trim();
+
+      if (!name) {
+        alert("Please enter your name or username.");
+        return;
+      }
+
+      // Auto-detect admin
+      if ((name.toLowerCase() === "admin" || name.toLowerCase().includes("administrator")) && password === "admin123") {
+        role = "admin";
+      }
+
+      if (role === "admin") {
+        if (password !== "admin123") {
+          alert("❌ Incorrect password for Admin! Password is: admin123");
+          return;
+        }
+
+        const adminUser = {
+          name: name,
+          email: name.toLowerCase().includes("@") ? name : `${name.toLowerCase()}@petjoy.in`,
+          role: "admin",
+          roleLabel: "Admin",
+          avatar: "👑"
+        };
+
+        localStorage.setItem("petjoy_current_user", JSON.stringify(adminUser));
+        alert(`🎉 Welcome Administrator ${adminUser.name}!\nLogged in with full store access.`);
+        window.location.href = "index.html";
+      } else {
+        if (password !== "user123") {
+          alert("❌ Incorrect password for Customer! Password is: user123");
+          return;
+        }
+
+        const customerUser = {
+          name: name,
+          email: name.toLowerCase().includes("@") ? name : `${name.toLowerCase()}@petjoy.in`,
+          role: "user",
+          roleLabel: "Customer",
+          avatar: "👤"
+        };
+
+        localStorage.setItem("petjoy_current_user", JSON.stringify(customerUser));
+        alert(`🎉 Welcome, ${customerUser.name}!\nLogged in as Customer.`);
+        window.location.href = "index.html";
+      }
+    }
+  </script>
+</body>
+</html>
